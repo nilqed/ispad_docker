@@ -28,12 +28,9 @@ RUN cd /root && git clone https://github.com/fredokun/cl-jupyter.git && \
 
 RUN cd /root && git clone https://bitbucket.org/kfp/ispad.git && \
     cd ./ispad && \
-    ./ispad_setup && \
-    sbcl --non-interactive --load "/root/quicklisp/setup" \
-         --eval "(ql:quickload \"pzmq\")" \
-         --eval "(ql:quickload \"bordeaux-threads\")" \
-         --eval "(ql:quickload \"uuid\")" \
-         --eval "(ql:quickload \"cl-base64\")" 
+    ./setup.sh 
+
+
   
 # =======
 # MathJax
@@ -42,6 +39,7 @@ RUN cd /root && git clone https://bitbucket.org/kfp/ispad.git && \
 RUN cd /usr/local/lib/python3.4/dist-packages/notebook/static/components && \
     rm -r MathJax && \
     git clone git://github.com/mathjax/MathJax.git MathJax
+
 
 # =====================
 # CodeMirror mode/lexer
